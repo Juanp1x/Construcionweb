@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./UserCrud.css";
 
 const API_URL = "http://localhost:5001/api/usuarios";
 
@@ -13,9 +14,12 @@ function UserCrud() {
     setUsers(res.data);
   };
 
-  useEffect(() => { fetchUsers(); }, []);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +34,11 @@ function UserCrud() {
   };
 
   const handleEdit = (user) => {
-    setForm({ nombre: user.nombre, email: user.email, telefono: user.telefono });
+    setForm({
+      nombre: user.nombre,
+      email: user.email,
+      telefono: user.telefono,
+    });
     setEditId(user.id);
   };
 
@@ -42,9 +50,10 @@ function UserCrud() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Gestión de Usuarios</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="crud-container">
+      <h2 className="crud-title">💄 Gestión de Clientes - Beauty Glam 💅</h2>
+
+      <form className="crud-form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="nombre"
@@ -56,7 +65,7 @@ function UserCrud() {
         <input
           type="email"
           name="email"
-          placeholder="Correo"
+          placeholder="Correo electrónico"
           value={form.email}
           onChange={handleChange}
           required
@@ -68,13 +77,19 @@ function UserCrud() {
           value={form.telefono}
           onChange={handleChange}
         />
-        <button type="submit">{editId ? "Actualizar" : "Agregar"}</button>
+        <button type="submit" className="crud-btn add-btn">
+          {editId ? "Actualizar ✨" : "Agregar 💕"}
+        </button>
       </form>
 
-      <table border="1" cellPadding="10" style={{ marginTop: "20px" }}>
+      <table className="crud-table">
         <thead>
           <tr>
-            <th>ID</th><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Acciones</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo electrónico</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -85,8 +100,15 @@ function UserCrud() {
               <td>{u.email}</td>
               <td>{u.telefono}</td>
               <td>
-                <button onClick={() => handleEdit(u)}> Editar</button>
-                <button onClick={() => handleDelete(u.id)}> Eliminar</button>
+                <button className="crud-btn edit-btn" onClick={() => handleEdit(u)}>
+                  Editar
+                </button>
+                <button
+                  className="crud-btn delete-btn"
+                  onClick={() => handleDelete(u.id)}
+                >
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}
