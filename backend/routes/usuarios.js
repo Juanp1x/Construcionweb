@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
 
-// 🟢 READ - Listar todos los usuarios
+//  READ - Listar todos los usuarios
 router.get('/', (req, res) => {
   const query = 'SELECT * FROM usuarios ORDER BY id DESC';
   db.query(query, (err, results) => {
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
   });
 });
 
-//  READ - Obtener un usuario por ID
+//  READ - Obtener un usuario por id
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   const query = 'SELECT * FROM usuarios WHERE id = ?';
@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// 🟢 CREATE - Agregar un nuevo usuario
+// CREATE - Agregar un nuevo usuario
 router.post('/', (req, res) => {
   const { nombre, email, telefono } = req.body;
 
