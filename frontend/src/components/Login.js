@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Login.css';
+import './Styles/Login.css';
 
 function Login({ onLogin }) {
     const [formData, setFormData] = useState({
@@ -85,10 +85,6 @@ function Login({ onLogin }) {
                     </button>
                 </form>
 
-                <div className="login-footer">
-                    <p>Credenciales de prueba:</p>
-                    <p>Email: juan.perez@email.com | Contraseña: 123456</p>
-                </div>
             </div>
         </div>
     );

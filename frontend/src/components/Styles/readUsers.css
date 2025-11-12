@@ -1,0 +1,40 @@
+.read-container {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(210, 54, 105, 0.2);
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+  border: 1px solid #ffe4ec;
+}
+
+.read-container h2 {
+  color: #d23669;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.read-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.read-table th,
+.read-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ffe4ec;
+}
+
+.read-table th {
+  background: #fff9fb;
+  color: #d23669;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.read-table tr:hover {
+  background: #fff1f7;
+}
