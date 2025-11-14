@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Login from "./components/Login";
 import CreateUser from "./components/CreateUser";
-import ReadUsers from "./components/UserList";
+import ReadUsers from "./components/userList";
 import UpdateUser from "./components/UpdateUser";
 import DeleteUser from "./components/DeleteUser";
 import "./App.css";

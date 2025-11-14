@@ -24,16 +24,20 @@ function Login({ onLogin }) {
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:5001/api/auth/login', formData);
-            
-            if (response.data.success) {
-                // Login exitoso - pasar el usuario al App.js
+            // RUTA CORRECTA SEGÚN TU BACKEND
+            const response = await axios.post(
+                'http://localhost:5001/api/usuarios/login',
+                formData
+            );
+
+            // AJUSTE: Tu backend NO manda "success", solo "message"
+            if (response.data.message === 'Login exitoso') {
                 onLogin(response.data.user);
             } else {
-                setError(response.data.message || 'Error en el login');
+                setError('Credenciales incorrectas');
             }
         } catch (err) {
-            setError(err.response?.data?.message || 'Error de conexión');
+            setError(err.response?.data?.error || 'Error de conexión');
         } finally {
             setLoading(false);
         }

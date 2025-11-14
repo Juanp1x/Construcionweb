@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-
-const authRoutes = require('./routes/auth');
+// 👇 QUITAR esta línea
+// const authRoutes = require('./routes/auth');
 const usuariosRoutes = require('./routes/usuarios');
 
 const app = express();
@@ -12,8 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas principales
-app.use('/api/auth', authRoutes);        // 👉 para login y autenticación
-app.use('/api/usuarios', usuariosRoutes); // 👉 para operaciones de usuarios
+// 👇 QUITAR esta línea
+// app.use('/api/auth', authRoutes);
+app.use('/api/usuarios', usuariosRoutes); // 👈 Esta ruta ahora tiene el login
 
 // Ruta de prueba
 app.get('/', (req, res) => {
